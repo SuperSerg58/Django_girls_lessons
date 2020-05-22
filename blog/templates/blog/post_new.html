@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Create Post
+{% endblock %}
+
+{% block content %}
+    <div class="main_body mt-5">
+        <div class="row">
+            <div class="col-8 offset-md-2">
+                <div class="">
+                    <h3 class="mb-3">New post:</h3>
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="save btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

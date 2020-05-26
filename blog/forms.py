@@ -1,9 +1,14 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Post
 
 
-class PostForm(ModelForm):
+class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
         fields = ('title', 'text')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control mb-3'}),
+            'text': forms.Textarea(attrs={'class': 'form-control mb-3'}),
+        }

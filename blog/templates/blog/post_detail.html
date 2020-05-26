@@ -15,7 +15,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text">{{ post.text }}</p>
-                        <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-info">Edit</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-info">Edit</a>
+                        {% endif %}
                         <a href="{% url 'post_list' %}" class="btn btn-primary">Back</a>
                     </div>
                 </div>

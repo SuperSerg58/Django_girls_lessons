@@ -15,21 +15,44 @@
 <body>
 <div class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav offset-md-2">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'post_list' %}">
-                        Main Page
-                    </a>
-                </li>
+        <div style="justify-content: space-between; display: flex" class="collapse navbar-collapse" id="navbarNav">
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'post_new' %}">
-                        New Post
-                    </a>
-                </li>
+            <div class="left-menu offset-md-2">
+                <ul class="navbar-nav offset-md-2" style="margin-right: auto; margin-left: 0;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'post_list' %}">
+                            Main Page
+                        </a>
+                    </li>
 
-            </ul>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'post_new' %}">
+                                New Post
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="right-menu">
+                <ul class="navbar-nav offset-md-2" style="margin-right: 380px;">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/admin">
+                                Admin
+                            </a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/admin/logout">
+                                LogOut
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
         </div>
     </nav>
 </div>

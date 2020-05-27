@@ -25,6 +25,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'polls' %}">
+                            Polls
+                        </a>
+                    </li>
+
                     {% if user.is_authenticated %}
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'post_new' %}">
@@ -57,8 +63,14 @@
     </nav>
 </div>
 
-{% block content %}
-{% endblock %}
+<div class="main_body mt-5">
+        <div class="row">
+            <div class="col-8 offset-md-2">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+</div>
 
 </body>
 </html>

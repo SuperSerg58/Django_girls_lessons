@@ -5,23 +5,19 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main_body mt-5">
-        <div class="row">
-            <div class="col-8 offset-md-2">
-                <div class="card">
-                    <div class="card-header">
-                        {{ post.published }}
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.text }}</p>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-info">Edit</a>
-                        {% endif %}
-                        <a href="{% url 'post_list' %}" class="btn btn-primary">Back</a>
-                    </div>
-                </div>
-            </div>
+
+    <div class="card">
+        <div class="card-header">
+            {{ post.published }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.text }}</p>
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-info">Edit</a>
+            {% endif %}
+            <a href="{% url 'post_list' %}" class="btn btn-primary">Back</a>
         </div>
     </div>
+
 {% endblock %}

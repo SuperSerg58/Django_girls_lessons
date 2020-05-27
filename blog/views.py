@@ -1,5 +1,6 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Question
 from .forms import PostForm
 from django.utils import timezone
 
@@ -45,3 +46,12 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_new.html', {'form': form})
 
+
+def polls(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    return render(request, 'blog/polls/polls.html', {'questions': latest_question_list})
+
+
+def detail_polls(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'blog/polls/detail.html', {'question': question})
